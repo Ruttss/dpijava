@@ -1,9 +1,29 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        float a = 12;
-        float b = 3;
-        
-        System.out.println(del(a,b));
+        System.out.println("Введите выражение(возможные операции: \n 1.Сложение + \n 2.Вычитане -\n 3.Умножение *\n 4. Деление /");
+        System.out.println("Пример выражения: 2 + 4");
+        Scanner sc = new Scanner(System.in);
+        float a = sc.nextFloat();
+        char op = sc.next().charAt(0);
+        float b = sc.nextFloat();
+        switch (op) {
+            case ('+'):
+                System.out.println(plus(a,b));
+                break;
+            case ('-'):
+                System.out.println(minus(a,b));
+                break;
+            case ('*'):
+                System.out.println(umnoj(a,b));
+                break;
+            case ('/'):
+                System.out.println(del(a,b));
+                break;
+            default:
+                System.out.println("Ошибка записи выражения");
+        }
     }
     public static float plus(float a, float b)
     {

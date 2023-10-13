@@ -11,44 +11,44 @@ public class Main {
             float b = sc.nextFloat();
             switch (op) {
                 case ('+'):
-                    ans = plus(ans, b);
+                    ans = operations.plus(ans, b);
                     break;
                 case ('-'):
-                    ans = minus(ans, b);
+                    ans = operations.minus(ans, b);
                     break;
                 case ('*'):
-                    ans = umnoj(ans, b);
+                    ans = operations.umnoj(ans, b);
                     break;
                 case ('/'):
-                    ans = del(ans, b);
+                {
+                    if(b == 0)
+                    {
+                        System.out.println("На ноль делить нельзя");
+                        preobrazovanie_type_ans(ans);
+                        continue;
+                    }
+                    ans = operations.del(ans, b);
                     break;
+                }
                 default: {
-                    System.out.println("Ошибка записи выражения");
+                    System.out.println("Ошибка записи операции");
+                    System.out.print(ans);
                     continue;
                 }
             }
-            if (Math.round(ans) == ans)
-                System.out.print((int) ans);
-            else
-                System.out.print(ans);
+            preobrazovanie_type_ans(ans);
 
         }
     }
 
-    public static float plus(float a, float b) {
-        return a + b;
+    public static void preobrazovanie_type_ans (float ans) // функция преобоазует ответ в целочисленное значение или с плавающей точкой
+    {
+        if (Math.round(ans) == ans)
+            System.out.print((int) ans);
+        else
+            System.out.print(ans);
+        return;
     }
 
-    public static float minus(float a, float b) {
-        return a - b;
-    }
-
-    public static float umnoj(float a, float b) {
-        return a * b;
-    }
-
-    public static float del(float a, float b) {
-        return a / b;
-    }
 
 }
